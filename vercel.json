@@ -4,9 +4,10 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install --legacy-peer-deps",
-  "functions": {
-    "src/**": {
-      "runtime": "vercel-node@18.x"
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  }
+  ]
 }
