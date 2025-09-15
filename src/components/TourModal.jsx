@@ -15,7 +15,11 @@ const TourModal = ({ isOpen, onClose }) => {
   const [selectedTime, setSelectedTime] = useState("");
   const [groupSize, setGroupSize] = useState("");
   const [contactInfo, setContactInfo] = useState({
-    name, email);
+    name: "",
+    email: "",
+    phone: "",
+    specialRequests: ""
+  });
 
   const availableTimes = [
     "9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM", "4:00 PM"
@@ -32,18 +36,27 @@ const TourModal = ({ isOpen, onClose }) => {
     
     if (!selectedDate || !selectedTime || !contactInfo.name || !contactInfo.email) {
       toast({
-        title, description);
+        title: "Missing Information",
+        description: "Please fill in all required fields."
+      });
       return;
     }
 
     toast({
-      title, description);
+      title: "Tour Scheduled!",
+      description: `Your campus tour has been scheduled for ${selectedDate} at ${selectedTime}. We'll send confirmation details to ${contactInfo.email}.`
+    });
     
     // Reset form and close modal
     setSelectedDate("");
     setSelectedTime("");
     setGroupSize("");
-    setContactInfo({ name, email);
+    setContactInfo({
+      name: "",
+      email: "",
+      phone: "",
+      specialRequests: ""
+    });
     onClose();
   };
 
@@ -56,7 +69,13 @@ const TourModal = ({ isOpen, onClose }) => {
           </ModalDescription>
         </ModalHeader>
 
-        <div className="grid lg) => (
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Tour Information */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-primary mb-4">What You'll See</h3>
+              <div className="space-y-3">
+                {tourHighlights.map((highlight, index) => (
                   <div key={index} className="flex gap-4 p-4 border rounded-lg">
                     <img 
                       src={highlight.image} 
@@ -135,7 +154,7 @@ const TourModal = ({ isOpen, onClose }) => {
               <label className="text-sm font-medium text-foreground">Contact Name *</label>
               <Input 
                 value={contactInfo.name}
-                onChange={(e) => setContactInfo(prev => ({...prev, name))}
+                onChange={(e) => setContactInfo(prev => ({...prev, name: e.target.value}))}
                 placeholder="Enter your full name"
                 required
               />
@@ -146,7 +165,7 @@ const TourModal = ({ isOpen, onClose }) => {
               <Input 
                 type="email"
                 value={contactInfo.email}
-                onChange={(e) => setContactInfo(prev => ({...prev, email))}
+                onChange={(e) => setContactInfo(prev => ({...prev, email: e.target.value}))}
                 placeholder="Enter your email address"
                 required
               />
@@ -156,7 +175,7 @@ const TourModal = ({ isOpen, onClose }) => {
               <label className="text-sm font-medium text-foreground">Phone Number</label>
               <Input 
                 value={contactInfo.phone}
-                onChange={(e) => setContactInfo(prev => ({...prev, phone))}
+                onChange={(e) => setContactInfo(prev => ({...prev, phone: e.target.value}))}
                 placeholder="Enter your phone number"
               />
             </div>
@@ -165,7 +184,7 @@ const TourModal = ({ isOpen, onClose }) => {
               <label className="text-sm font-medium text-foreground">Special Requests</label>
               <Textarea 
                 value={contactInfo.specialRequests}
-                onChange={(e) => setContactInfo(prev => ({...prev, specialRequests))}
+                onChange={(e) => setContactInfo(prev => ({...prev, specialRequests: e.target.value}))}
                 placeholder="Any special accommodations or areas of interest?"
                 className="min-h-[80px]"
               />

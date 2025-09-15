@@ -11,13 +11,28 @@ const Contact = () => {
   const { toast } = useToast();
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [formData, setFormData] = useState({
-    firstName, lastName);
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     toast({
-      title, description);
-    setFormData({ firstName, lastName);
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We'll get back to you within 24 hours."
+    });
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: ""
+    });
   };
 
   const contactInfo = [
@@ -43,17 +58,36 @@ const Contact = () => {
     }
   ];
 
-  return (<section id="contact" className="py-20 bg-background">
+  return (
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md, academic advisors, or general information services. 
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Contact Us
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Ready to take the next step in your military career? Contact our admissions team, 
+              academic advisors, or general information services. 
               We're here to help you begin your journey with the Defense Academy.
             </p>
           </div>
 
-          <div className="grid lg) => setFormData(prev => ({...prev, firstName))}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <Card className="shadow-professional">
+              <CardHeader>
+                <CardTitle className="text-2xl text-primary">Send us a Message</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-foreground">First Name</label>
+                      <Input 
+                        value={formData.firstName}
+                        onChange={(e) => setFormData(prev => ({...prev, firstName: e.target.value}))}
                         placeholder="Enter your first name" 
                         required
                       />
@@ -62,7 +96,7 @@ const Contact = () => {
                       <label className="text-sm font-medium text-foreground">Last Name</label>
                       <Input 
                         value={formData.lastName}
-                        onChange={(e) => setFormData(prev => ({...prev, lastName))}
+                        onChange={(e) => setFormData(prev => ({...prev, lastName: e.target.value}))}
                         placeholder="Enter your last name" 
                         required
                       />
@@ -74,7 +108,7 @@ const Contact = () => {
                     <Input 
                       type="email" 
                       value={formData.email}
-                      onChange={(e) => setFormData(prev => ({...prev, email))}
+                      onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
                       placeholder="Enter your email address" 
                       required
                     />
@@ -84,7 +118,7 @@ const Contact = () => {
                     <label className="text-sm font-medium text-foreground">Phone Number</label>
                     <Input 
                       value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({...prev, phone))}
+                      onChange={(e) => setFormData(prev => ({...prev, phone: e.target.value}))}
                       placeholder="Enter your phone number" 
                     />
                   </div>
@@ -93,7 +127,7 @@ const Contact = () => {
                     <label className="text-sm font-medium text-foreground">Subject</label>
                     <Input 
                       value={formData.subject}
-                      onChange={(e) => setFormData(prev => ({...prev, subject))}
+                      onChange={(e) => setFormData(prev => ({...prev, subject: e.target.value}))}
                       placeholder="What is this regarding?" 
                       required
                     />
@@ -103,7 +137,7 @@ const Contact = () => {
                     <label className="text-sm font-medium text-foreground">Message</label>
                     <Textarea 
                       value={formData.message}
-                      onChange={(e) => setFormData(prev => ({...prev, message))}
+                      onChange={(e) => setFormData(prev => ({...prev, message: e.target.value}))}
                       placeholder="Tell us how we can help you..."
                       className="min-h-[120px]"
                       required
@@ -157,7 +191,10 @@ const Contact = () => {
                     <Button 
                       variant="outline" 
                       className="w-full justify-start"
-                      onClick={() => toast({ title, description)}
+                      onClick={() => toast({
+                        title: "Phone Call Scheduled",
+                        description: "We'll call you within the next business day."
+                      })}
                     >
                       <Phone className="h-4 w-4 mr-2" />
                       Schedule a Phone Call
@@ -173,7 +210,10 @@ const Contact = () => {
                     <Button 
                       variant="outline" 
                       className="w-full justify-start"
-                      onClick={() => toast({ title, description)}
+                      onClick={() => toast({
+                        title: "Information Packet Requested",
+                        description: "We'll send you our comprehensive information packet via email."
+                      })}
                     >
                       <Mail className="h-4 w-4 mr-2" />
                       Request Information Packet

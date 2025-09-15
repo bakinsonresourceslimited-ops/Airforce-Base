@@ -10,7 +10,15 @@ import { Send, Upload } from "lucide-react";
 const ApplicationModal = ({ isOpen, onClose }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    firstName, lastName);
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    program: "",
+    previousEducation: "",
+    militaryBackground: "",
+    personalStatement: ""
+  });
 
   const programs = [
     "Strategic Defense Studies",
@@ -27,22 +35,34 @@ const ApplicationModal = ({ isOpen, onClose }) => {
     // Basic validation
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.program) {
       toast({
-        title, description);
+        title: "Missing Information",
+        description: "Please fill in all required fields."
+      });
       return;
     }
 
     // Simulate form submission
     toast({
-      title, description);
+      title: "Application Submitted!",
+      description: "Thank you for your application. We'll review it and contact you within 5-7 business days."
+    });
     
     // Reset form and close modal
     setFormData({
-      firstName, lastName);
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      program: "",
+      previousEducation: "",
+      militaryBackground: "",
+      personalStatement: ""
+    });
     onClose();
   };
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]));
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   return (<Modal open={isOpen} onOpenChange={onClose}>

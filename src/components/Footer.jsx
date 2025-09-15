@@ -48,16 +48,61 @@ const Footer = () => {
     { icon: Youtube, href: "#", label: "YouTube" }
   ];
 
-  return (<footer className="bg-primary text-primary-foreground">
+  return (
+    <footer className="bg-primary text-primary-foreground">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid lg) => {
+        <div className="grid lg:grid-cols-5 gap-12">
+          {/* Academy Info */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-4 mb-6">
+              <img 
+                src={academyLogo} 
+                alt="Defense Academy Logo" 
+                className="h-12 w-12 object-contain"
+              />
+              <div>
+                <h3 className="text-xl font-bold">Defense Academy of Technology</h3>
+                <p className="text-sm text-primary-foreground/80">Excellence in Military Education</p>
+              </div>
+            </div>
+            <p className="text-primary-foreground/90 mb-6 leading-relaxed">
+              Developing strategic leaders and advancing defense technologies since 1978. 
+              Our commitment to excellence prepares graduates for distinguished service 
+              in military and civilian leadership roles.
+            </p>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center space-x-3 text-sm">
+                <MapPin className="h-4 w-4 text-accent" />
+                <span className="text-primary-foreground/80">Kaduna State, Nigeria</span>
+              </div>
+              <div className="flex items-center space-x-3 text-sm">
+                <Phone className="h-4 w-4 text-accent" />
+                <span className="text-primary-foreground/80">+234 704 955 7974</span>
+              </div>
+              <div className="flex items-center space-x-3 text-sm">
+                <Mail className="h-4 w-4 text-accent" />
+                <span className="text-primary-foreground/80">Michealadebayo070@gmail.com</span>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex space-x-3">
+              {socialMedia.map((social, index) => {
                 const IconComponent = social.icon;
-                return (<Button 
+                return (
+                  <Button 
                     key={index}
                     variant="ghost" 
                     size="icon"
-                    className="h-8 w-8 text-primary-foreground/80 hover);
+                    className="h-8 w-8 text-primary-foreground/80 hover:text-accent hover:bg-primary-light/20 transition-colors"
+                    aria-label={social.label}
+                  >
+                    <IconComponent className="h-4 w-4" />
+                  </Button>
+                );
               })}
             </div>
           </div>
@@ -67,10 +112,16 @@ const Footer = () => {
             <div key={index}>
               <h4 className="text-lg font-semibold mb-6">{section.title}</h4>
               <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (<li key={linkIndex}>
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
                     <a 
                       href={link.href}
-                      className="text-primary-foreground/80 hover))}
+                      className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
@@ -128,5 +179,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-

@@ -10,41 +10,73 @@ const LoginModal = ({ isOpen, onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email, password);
+    email: "",
+    password: "",
+    studentId: "",
+    confirmPassword: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     if (!formData.email || !formData.password) {
       toast({
-        title, description);
+        title: "Missing Information",
+        description: "Please fill in all required fields."
+      });
       return;
     }
 
     if (!isLogin && formData.password !== formData.confirmPassword) {
       toast({
-        title, description);
+        title: "Password Mismatch",
+        description: "Passwords do not match. Please try again."
+      });
       return;
     }
 
     // Simulate login/registration
     toast({
-      title, description);
+      title: isLogin ? "Login Successful!" : "Account Created!",
+      description: isLogin ? "Welcome back to the Defense Academy portal." : "Your account has been created successfully."
+    });
     
     // Reset form and close modal
-    setFormData({ email, password);
+    setFormData({
+      email: "",
+      password: "",
+      studentId: "",
+      confirmPassword: ""
+    });
     onClose();
   };
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]));
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  return (<Modal open={isOpen} onOpenChange={onClose}>
+  return (
+    <Modal open={isOpen} onOpenChange={onClose}>
       <ModalContent className="max-w-md">
         <ModalHeader>
           <ModalTitle className="text-2xl text-primary">
-            {isLogin ? "Student Login" ) => handleInputChange("email", e.target.value)}
+            {isLogin ? "Student Login" : "Create Account"}
+          </ModalTitle>
+          <ModalDescription>
+            {isLogin 
+              ? "Sign in to access your student portal and academic resources." 
+              : "Join the Defense Academy community and begin your journey."
+            }
+          </ModalDescription>
+        </ModalHeader>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">Email Address</label>
+            <Input 
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
               placeholder="Enter your email address"
               required
             />
@@ -96,8 +128,22 @@ const LoginModal = ({ isOpen, onClose }) => {
             </div>
           )}
 
-          {isLogin && (<div className="text-right">
-              <Button type="button" variant="ghost" size="sm" className="text-primary hover)}
+          {isLogin && (
+            <div className="text-right">
+              <Button 
+                type="button" 
+                variant="ghost" 
+                size="sm" 
+                className="text-primary hover:text-primary-light"
+                onClick={() => toast({
+                  title: "Password Reset",
+                  description: "Password reset functionality would be implemented here."
+                })}
+              >
+                Forgot password?
+              </Button>
+            </div>
+          )}
 
           <ModalFooter className="flex-col space-y-3">
             <Button type="submit" variant="military" className="w-full group">
@@ -136,5 +182,3 @@ const LoginModal = ({ isOpen, onClose }) => {
 };
 
 export default LoginModal;
-
-

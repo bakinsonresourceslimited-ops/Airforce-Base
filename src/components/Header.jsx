@@ -16,8 +16,8 @@ const Header = () => {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Programs", href: "#programs" },
-    { name: "Admissions", href: "#programs" }, // Maps to Programs section which contains admission info
-    { name: "Academics", href: "#programs" }, // Maps to Programs section which contains academic programs
+    { name: "Admissions", href: "#programs" },
+    { name: "Academics", href: "#programs" },
     { name: "News", href: "#news" },
     { name: "Contact", href: "#contact" },
   ];
@@ -25,12 +25,13 @@ const Header = () => {
   const handleNavClick = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior);
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
   };
 
-  return (<>
+  return (
+    <>
       {/* Top Info Bar */}
       <div className="bg-primary text-primary-foreground py-2 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
@@ -44,7 +45,13 @@ const Header = () => {
               <span>Michealadebayo070@gmail.com</span>
             </div>
           </div>
-          <div className="hidden md) => setIsLoginOpen(true)}
+          <div className="hidden md:flex items-center space-x-4">
+            <span>Defense Academy Portal</span>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              className="text-primary-foreground hover:bg-primary-light"
+              onClick={() => setIsLoginOpen(true)}
             >
               Student Login
             </Button>
@@ -111,7 +118,10 @@ const Header = () => {
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (<nav className="lg) => (
+          {isMenuOpen && (
+            <nav className="lg:hidden mt-4 pb-4 border-t border-border">
+              <div className="flex flex-col space-y-3 pt-4">
+                {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
@@ -152,5 +162,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

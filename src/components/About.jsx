@@ -32,7 +32,8 @@ const About = () => {
     }
   ];
 
-  return (<section id="about" className="py-20 bg-gradient-subtle">
+  return (
+    <section id="about" className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -41,13 +42,35 @@ const About = () => {
             <div className="absolute -top-5 left-1/4 w-3 h-3 bg-primary/20 rounded-full animate-float" />
             <div className="absolute -top-8 right-1/3 w-2 h-2 bg-accent/30 rounded-full animate-float stagger-3" />
             
-            <h2 className="text-3xl md, we have been at the forefront of military education and defense technology, 
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 hover-glow">
+              About the Defense Academy
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1">
+              For over four decades, we have been at the forefront of military education and defense technology, 
               shaping the minds that protect our nation.
             </p>
           </div>
 
           {/* Main Content */}
-          <div className="grid lg) => setIsHistoryModalOpen(true)}
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
+            <div className="space-y-6 animate-slide-in-left stagger-1">
+              <Card className="shadow-professional hover-lift hover-glow animate-fade-in-scale stagger-1">
+                <CardContent className="p-6">
+                  <h4 className="text-xl font-semibold text-primary mb-3 animate-fade-in-up">Mission Statement</h4>
+                  <p className="text-muted-foreground animate-fade-in-up stagger-1">
+                    The Defense Academy of Technology is dedicated to educating and training the next generation 
+                    of military leaders through rigorous academic programs, cutting-edge research, and character 
+                    development. We foster innovation, critical thinking, and ethical leadership to meet the 
+                    evolving challenges of national and global security.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Button 
+                variant="military" 
+                size="lg" 
+                className="group hover-lift hover-glow animate-fade-in-scale stagger-2"
+                onClick={() => setIsHistoryModalOpen(true)}
               >
                 Learn More About Our History
               </Button>
@@ -84,7 +107,21 @@ const About = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => {
                 const IconComponent = value.icon;
-                return (<Card key={index} className={`text-center shadow-professional hover);
+                return (
+                  <Card key={index} className="text-center shadow-professional hover-lift hover-glow animate-fade-in-scale transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-gentle">
+                        <IconComponent className="h-8 w-8 text-primary" />
+                      </div>
+                      <h5 className="text-lg font-semibold text-primary mb-2 animate-fade-in-up">
+                        {value.title}
+                      </h5>
+                      <p className="text-muted-foreground text-sm leading-relaxed animate-fade-in-up stagger-1">
+                        {value.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
               })}
             </div>
           </div>
@@ -176,5 +213,3 @@ const About = () => {
 };
 
 export default About;
-
-

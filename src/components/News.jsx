@@ -76,14 +76,26 @@ const News = () => {
     setIsDetailModalOpen(true);
   };
 
-  return (<section id="news" className="py-20 bg-gradient-subtle">
+  return (
+    <section id="news" className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="flex items-center justify-center gap-2 mb-4 animate-slide-in-left">
               <TrendingUp className="h-6 w-6 text-primary animate-pulse-gentle" />
-              <h2 className="text-3xl md).map((article, index) => (
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Latest News & Updates
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto animate-fade-in-up stagger-1">
+              Stay informed with the latest developments, achievements, and events 
+              from the Defense Academy community.
+            </p>
+          </div>
+
+          {/* Featured Article */}
+          {newsItems.filter(item => item.featured).map((article, index) => (
             <Card key={index} className="mb-12 shadow-elevated border-2 border-primary/20 hover-lift hover-glow animate-fade-in-scale">
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-2 mb-3">
@@ -122,7 +134,11 @@ const News = () => {
 
           {/* News Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {newsItems.filter(item => !item.featured).map((article, index) => (<Card key={index} className="h-full shadow-professional hover)} className="text-xs">
+            {newsItems.filter(item => !item.featured).map((article, index) => (
+              <Card key={index} className="h-full shadow-professional hover-lift hover-glow transition-all duration-300 cursor-pointer group">
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant={getCategoryColor(article.category)} className="text-xs">
                       {article.category}
                     </Badge>
                   </div>
@@ -183,5 +199,3 @@ const News = () => {
 };
 
 export default News;
-
-

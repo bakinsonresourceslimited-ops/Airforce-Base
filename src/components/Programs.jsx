@@ -77,19 +77,27 @@ const Programs = () => {
     }
   };
 
-  return (<section id="programs" className="py-20 bg-background">
+  return (
+    <section id="programs" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-3xl md, security, and military service.
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Academic Programs
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Discover world-class programs designed to prepare leaders for careers in defense, 
+              security, and military service.
             </p>
           </div>
 
           {/* Programs Grid */}
-          <div className="grid md) => {
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {programs.map((program, index) => {
               const IconComponent = program.icon;
-              return (<Card key={index} className={`h-full shadow-professional hover) + 1}`}>
+              return (
+                <Card key={index} className={`h-full shadow-professional hover-lift hover-glow transition-all duration-300 group animate-fade-in-scale stagger-${(index % 3) + 1}`}>
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between mb-4">
                       <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -168,5 +176,3 @@ const Programs = () => {
 };
 
 export default Programs;
-
-

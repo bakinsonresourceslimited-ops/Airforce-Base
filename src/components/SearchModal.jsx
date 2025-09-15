@@ -6,7 +6,7 @@ import { Search, BookOpen, Users, FileText, MapPin, Calendar, Phone } from "luci
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   const allContent = [
     // Programs & Academics

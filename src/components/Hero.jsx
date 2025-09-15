@@ -10,18 +10,19 @@ const Hero = () => {
   const handleExplorePrograms = () => {
     const element = document.getElementById('programs');
     if (element) {
-      element.scrollIntoView({ behavior);
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const handleScrollDown = () => {
     const element = document.getElementById('about');
     if (element) {
-      element.scrollIntoView({ behavior);
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  return (<section id="home" className="relative min-h-screen flex items-center">
+  return (
+    <section id="home" className="relative min-h-screen flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -47,11 +48,26 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md, rigorous training, and unwavering commitment to excellence.
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up">
+            Forging Future Leaders at the
+            <span className="text-accent block animate-slide-in-right stagger-2">
+              Defense Academy of Technology
+            </span>
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed animate-fade-in-up stagger-3">
+            Preparing tomorrow's military leaders through cutting-edge education, 
+            rigorous training, and unwavering commitment to excellence.
           </p>
 
           {/* Call to Action Buttons */}
-          <div className="flex flex-col sm) => setIsApplicationOpen(true)}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-in-up stagger-4">
+            <Button 
+              variant="military" 
+              size="lg" 
+              className="group hover-lift hover-glow"
+              onClick={() => setIsApplicationOpen(true)}
             >
               Start Your Journey
               <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -105,5 +121,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-
