@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
-import academyLogo from "@/assets/academy-logo.png";
+import academyLogo from "@/assets/academy-logo.svg";
 
 const Footer = () => {
   const footerSections = [

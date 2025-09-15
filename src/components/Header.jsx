@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Search, Phone, Mail } from "lucide-react";
-import academyLogo from "@/assets/academy-logo.png";
+import academyLogo from "@/assets/academy-logo.svg";
 import ApplicationModal from "@/components/ApplicationModal";
 import SearchModal from "@/components/SearchModal";
 import LoginModal from "@/components/LoginModal";
