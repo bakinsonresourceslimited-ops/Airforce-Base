@@ -15,7 +15,12 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'esnext',
+    target: 'es2015',
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
 });
