@@ -72,11 +72,19 @@ const ApplicationModal = ({ isOpen, onClose }) => {
           <ModalDescription>
             <div className="space-y-4 text-left">
               <div>
-                <h4 className="font-semibold text-primary mb-2">Academic Requirements, varies for officers</li>
+                <h4 className="font-semibold text-primary mb-2">Academic Requirements</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• High school diploma or equivalent</li>
+                  <li>• Minimum GPA of 3.0 (varies by program)</li>
+                  <li>• Physical fitness requirements</li>
+                  <li>• Background check and security clearance</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-primary mb-2">Documents Required)</li>
+                <h4 className="font-semibold text-primary mb-2">Documents Required</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Official transcripts</li>
+                  <li>• Letters of recommendation</li>
                   <li>• Medical examination report</li>
                   <li>• Birth certificate and citizenship proof</li>
                 </ul>

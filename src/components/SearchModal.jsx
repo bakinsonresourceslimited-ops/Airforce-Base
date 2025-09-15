@@ -79,18 +79,18 @@ const SearchModal = ({ isOpen, onClose }) => {
   const handleResultClick = (result) => {
     // Navigate to the appropriate section based on type and content
     if (result.type === "Program" || result.type === "Admissions" || result.title.includes("Academic")) {
-      document.getElementById('programs')?.scrollIntoView({ behavior);
+      document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
     } else if (result.type === "News") {
-      document.getElementById('news')?.scrollIntoView({ behavior);
+      document.getElementById('news')?.scrollIntoView({ behavior: 'smooth' });
     } else if (result.type === "About" || result.title.includes("Mission") || result.title.includes("History")) {
-      document.getElementById('about')?.scrollIntoView({ behavior);
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     } else if (result.type === "Campus" || result.title.includes("Campus") || result.title.includes("Facilities")) {
-      document.getElementById('about')?.scrollIntoView({ behavior); // Campus info is in about section
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }); // Campus info is in about section
     } else if (result.title.includes("Contact") || result.title.includes("Phone")) {
-      document.getElementById('contact')?.scrollIntoView({ behavior);
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     } else {
       // Default to programs section for most queries
-      document.getElementById('programs')?.scrollIntoView({ behavior);
+      document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
     }
     onClose();
   };
@@ -118,7 +118,9 @@ const SearchModal = ({ isOpen, onClose }) => {
               {searchResults.length > 0 ? (
                 <>
                   <p className="text-sm text-muted-foreground mb-3">
-                    {searchResults.length} result{searchResults.length !== 1 ? 's' ) => {
+                    {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} found
+                  </p>
+                  {searchResults.map((result, index) => {
                     const IconComponent = result.icon;
                     return (
                       <div
